@@ -8,6 +8,8 @@ app.use(cors());
 
 require("./database/connection");
 
+app.use("/users", require("./routes/userRoute"));
+
 const port = process.env.PORT || 90;
 app.listen(port, () => {
   console.log(`Server running at port ${port}`);
