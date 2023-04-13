@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-import Footer from "../components/ui/footer";
+import Footer from "../components/ui/Footer";
 import FeatureCard from "../components/ui/FeatureCard";
 
 import { CiBookmark } from "react-icons/ci";
