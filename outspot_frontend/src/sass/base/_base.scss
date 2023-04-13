@@ -89,3 +89,12 @@ a:visited,
     transform: scale(1.05);
   }
 }
+.error-message {
+  color: $error-color;
+  font-size: 1.8rem;
+}
+.icon {
+  width: 6.4rem;
+  height: 6.4rem;
+  margin-bottom: 1.8rem;
+}
