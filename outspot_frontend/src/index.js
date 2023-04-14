@@ -3,11 +3,18 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./sass/index.scss";
 import { BrowserRouter as Router } from "react-router-dom";
+import LoadingContextProvider from "./context/LoadingContext/LoadingContextProvider";
+
+import LoginContextProvider from "./context/LoginContext/LoginContextProvider";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Router>
-      <App />
+      <LoginContextProvider>
+        <LoadingContextProvider>
+          <App />
+        </LoadingContextProvider>
+      </LoginContextProvider>
     </Router>
   </React.StrictMode>
 );

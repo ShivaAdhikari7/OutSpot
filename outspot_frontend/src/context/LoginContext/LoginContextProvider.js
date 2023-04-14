@@ -28,7 +28,7 @@ const LoginContextProvider = (props) => {
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("userId", response.data.userId);
         localStorage.setItem("username", response.data.userName);
-        navigate("/");
+        navigate("/home");
       }
     } catch (err) {
       setInvalidCredentials(true);
