@@ -3,10 +3,14 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./sass/index.scss";
 
+import LoadingContextProvider from "./context/LoadingContext/LoadingContextProvider";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <LoadingContextProvider>
+      <App />
+    </LoadingContextProvider>
   </React.StrictMode>
 );
 

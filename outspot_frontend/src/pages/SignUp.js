@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from "react";
+import React, { useState, useReducer, useContext } from "react";
 import Form from "../components/ui/Form";
 import ReactDOM from "react-dom";
 
@@ -8,6 +8,8 @@ import signUpImage from "../assets/Images/signup-img.jpg";
 import Input from "../components/ui/Input";
 import Footer from "../components/ui/Footer";
 import Message from "../components/ui/Message";
+import LoadingSpinner from "../components/ui/LoadingSpinner";
+import LoadingContext from "../context/LoadingContext/LoadingContext";
 
 const initialEmailState = {
   value: "",
@@ -19,6 +21,13 @@ const initialPasswordState = {
   isValid: false,
 };
 
+// To check the loadingSpinner:
+
+const simulateLoading = (sec) => {
+  return new Promise((resolve, _) => {
+    setTimeout(resolve, sec * 1000);
+  });
+};
 const emailReducer = (state, action) => {
   if (action.type === "USER_INPUT") {
     return { value: action.val, isValid: action.val.trim().includes("@") };
@@ -40,6 +49,7 @@ const passwordReducer = (state, action) => {
 };
 
 const SignUp = () => {
+  const LoadingCtx = useContext(LoadingContext);
   const navigate = useNavigate();
 
   const [emailState, dispatchEmail] = useReducer(
@@ -140,13 +150,19 @@ const SignUp = () => {
       phoneNo: enteredPhone,
     };
     try {
+      LoadingCtx.setIsLoading(true);
+
+      await simulateLoading(2);
+
       await axios.post("http://localhost:90/users/register", data);
+      LoadingCtx.setIsLoading(false);
       navigate("/login");
       resetValue();
     } catch (err) {
       console.log(err);
       if (err.response.data.message) {
         setUserExistsError(true);
+        LoadingCtx.setIsLoading(false);
       }
     }
   };
@@ -157,6 +173,7 @@ const SignUp = () => {
 
   return (
     <>
+      {LoadingCtx.isLoading && <LoadingSpinner />}
       {ReactDOM.createPortal(
         <Message
           containerName={"success-message-container"}
@@ -196,6 +213,7 @@ const SignUp = () => {
           <p className="error-message">*Last name cannot be empty</p>
         )}
         <Input
+          isValid={emailState.isValid}
           id="email"
           type="email"
           placeholder="name@example.com"
@@ -224,6 +242,7 @@ const SignUp = () => {
           <p className="error-message">Phone number length must be ten.</p>
         )}
         <Input
+          isValid={passwordState.isValid}
           id="password"
           type="password"
           placeholder="●●●●●●"
