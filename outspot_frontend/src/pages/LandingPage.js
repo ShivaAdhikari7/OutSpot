@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import Footer from "../components/ui/Footer";
 import FeatureCard from "../components/ui/FeatureCard";
-
+import Navbar from "../components/ui/Navbar/Navbar";
 import { CiBookmark } from "react-icons/ci";
 import { BiCommentAdd } from "react-icons/bi";
 import { SiWpexplorer } from "react-icons/si";
@@ -42,6 +42,7 @@ const LandingPage = () => {
   ];
   return (
     <>
+      <Navbar />
       <div className="container-fluid landing-container">
         <div className="landing-content">
           <div className="landing-text text-center">

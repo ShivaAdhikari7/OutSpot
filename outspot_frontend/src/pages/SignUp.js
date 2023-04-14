@@ -8,6 +8,7 @@ import signUpImage from "../assets/Images/signup-img.jpg";
 import Input from "../components/ui/Input";
 import Footer from "../components/ui/Footer";
 import Message from "../components/ui/Message";
+import Navbar from "../components/ui/Navbar/Navbar";
 import LoadingSpinner from "../components/ui/LoadingSpinner";
 import LoadingContext from "../context/LoadingContext/LoadingContext";
 
@@ -184,6 +185,7 @@ const SignUp = () => {
         />,
         document.getElementById("message-root")
       )}
+      <Navbar />
       <Form
         onSubmit={formSubmitHandler}
         img={signUpImage}

@@ -55,6 +55,7 @@ const loginUser = async (req, res) => {
       res.json({
         userId: user._id,
         token: generateToken(user._id),
+        userName: user.firstName + user.lastName,
       });
     } else {
       res.status(400);

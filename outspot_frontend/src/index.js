@@ -2,15 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./sass/index.scss";
-
-import LoadingContextProvider from "./context/LoadingContext/LoadingContextProvider";
-
+import { BrowserRouter as Router } from "react-router-dom";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <LoadingContextProvider>
+    <Router>
       <App />
-    </LoadingContextProvider>
+    </Router>
   </React.StrictMode>
 );
 
