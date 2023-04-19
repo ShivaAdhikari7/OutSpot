@@ -13,7 +13,7 @@ app.use("/images", express.static(path.join(__dirname, "/images")));
 
 app.use("/users", require("./routes/userRoute"));
 
-app.use("/sports", require("./routes/spotRoute"));
+app.use("/spots", require("./routes/spotRoute"));
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
