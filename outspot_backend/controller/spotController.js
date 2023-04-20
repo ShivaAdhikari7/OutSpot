@@ -75,6 +75,7 @@ const addSpot = async (req, res) => {
       }
 
       imageURL = basePath + fileName;
+      console.log(basePath);
     }
 
     const spotData = await Spot.create({
@@ -101,6 +102,15 @@ const addSpot = async (req, res) => {
     }
   } catch (err) {
     res.json({ message: err.message });
+  }
+};
+
+const getAllSpots = async (req, res) => {
+  try {
+    const allSpots = await Spot.find({});
+    res.json({ data: allSpots });
+  } catch (err) {
+    res.json({ errorMessage: err.message });
   }
 };
 const getSpotSearch = async (req, res) => {
@@ -135,6 +145,60 @@ const getSpot = async (req, res) => {
   }
 };
 
+const updateSpot = async (req, res) => {
+  try {
+    const spotId = req.params.id;
+
+    const spotData = await Spot.findById(spotId);
+    if (!spotData) {
+      res.status(400);
+      throw new Error("No spot Found");
+    }
+
+    const user = await User.findById(req.user.id);
+    if (!user) {
+      res.status(401);
+      throw new Error("User not found");
+    }
+
+    if (spotData.userId.toString() !== user.id) {
+      res.status(401);
+      throw new Error("User not authorized");
+    }
+
+    const imgFile = req.file;
+    let imageURL;
+    if (imgFile) {
+      let basePath;
+      const fileName = imgFile.filename;
+
+      if (req.get("host").includes("10.0.2.2")) {
+        basePath = `${req.portocol}://${req
+          .get("host")
+          .replace("10.0.2.2", "localhost")}/images/`;
+      } else {
+        basePath = `${req.protocol}://${req.get("host")}/images/`;
+      }
+
+      imageURL = basePath + fileName;
+    }
+
+    const updatedSpot = await Spot.findByIdAndUpdate(
+      spotId,
+      {
+        ...req.body,
+        imageURL,
+      },
+      {
+        new: true,
+      }
+    );
+    res.status(200).json({ message: "Successfully updated", updatedSpot });
+  } catch (err) {
+    error: err.message;
+  }
+};
+
 const deleteSpot = async (req, res) => {
   try {
     const spotId = req.params.id;
@@ -161,9 +225,45 @@ const deleteSpot = async (req, res) => {
     res.json({ error: err.message });
   }
 };
+
+const getSpotType = async (req, res) => {
+  try {
+    console.log(req.params);
+    const { type } = req.params;
+    const typeWisedata = await Spot.find({ type: type });
+    if (!typeWisedata) throw new Error(`No any spot found of type ${type}`);
+    res.json({ data: typeWisedata });
+  } catch (err) {
+    res.send({ errorMessage: err.message });
+  }
+};
+const getSpotUser = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const spotData = await Spot.find({ userId: userId });
+
+    res.json({ data: spotData });
+  } catch (err) {
+    res.json({ errorMessage: err.message });
+  }
+};
+const getAllCoords = async (req, res) => {
+  try {
+    const allCoords = await Spot.find({}, "latitude longitude name");
+    if (!allCoords) throw new Error("Error while fetching data");
+    if (allCoords) res.send({ allCoords });
+  } catch (err) {
+    res.send({ errorMessage: err.message });
+  }
+};
 module.exports = {
   addSpot,
+  getAllSpots,
   getSpot,
   getSpotSearch,
   deleteSpot,
+  updateSpot,
+  getSpotType,
+  getSpotUser,
+  getAllCoords,
 };
