@@ -16,6 +16,8 @@ app.use("/users", require("./routes/userRoute"));
 app.use("/spots", require("./routes/spotRoute"));
 app.use("/bookings", require("./routes/bookingRoute"));
 
+app.use("/reviews", require("./routes/reviewRoute"));
+
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Server running at port ${port}`);
