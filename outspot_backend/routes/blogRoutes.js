@@ -19,7 +19,7 @@ router.route("/all").get(getAllBlogs);
 router.route("/:id").get(userGuard, getBlog);
 router.route("/get/me").get(userGuard, getBlogUser);
 router.route("/add").post(userGuard, upload.single("img"), addBlog);
-router.route("/update/:id", userGuard, upload.single("img"), updateBlog);
+router.route("/update/:id").put(userGuard, upload.single("img"), updateBlog);
 router.route("/delete/:id").delete(userGuard, deleteBlog);
 
 module.exports = router;

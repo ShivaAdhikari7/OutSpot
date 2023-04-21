@@ -16,14 +16,17 @@ const BlogModel = new mongoose.Schema({
     type: String,
     required: true,
   },
-  imgUrl: {
+  imageUrl: {
     type: String,
   },
   authorName: {
     type: String,
     required: true,
   },
-  userId: mongoose.Types.ObjectId,
-  required: true,
+  userId: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+  },
 });
+// module.exports = mongoose.model("Blog", BlogModel);
 module.exports = mongoose.model("Blog", BlogModel);

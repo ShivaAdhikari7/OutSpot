@@ -15,7 +15,9 @@ app.use("/users", require("./routes/userRoute"));
 
 app.use("/spots", require("./routes/spotRoute"));
 app.use("/bookings", require("./routes/bookingRoute"));
-app.use("blogs", require("./routes/blogRoutes"));
+
+app.use("/blogs", require("./routes/blogRoutes"));
+
 app.use("/reviews", require("./routes/reviewRoute"));
 
 const port = process.env.PORT || 5000;
