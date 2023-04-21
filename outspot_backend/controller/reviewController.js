@@ -50,6 +50,19 @@ const getAllReviews = async () => {
 };
 const getReviewUser = async () => {
   try {
+    const user = req.user;
+    const { spotId } = req.body;
+    if (!user) {
+      res.status(400);
+      throw new Error("User not authorized");
+    }
+    if (!spotId) {
+      res.status(400);
+      throw new Error("No any spot");
+    }
+
+    const reviewData = await Review.find({ userId: user.id, spotId: spotId });
+    res.json({ reviewData });
   } catch (err) {
     res.json({ errorMessage: err.message });
   }
