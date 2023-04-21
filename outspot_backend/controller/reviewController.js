@@ -32,7 +32,7 @@ const addReview = async (req, res) => {
     res.json({ message: err.message });
   }
 };
-const getAllReviews = async () => {
+const getAllReviews = async (req, res) => {
   try {
     const { id } = req.params;
     if (!id) {
@@ -48,7 +48,7 @@ const getAllReviews = async () => {
     res.json({ errorMessage: err.message });
   }
 };
-const getReviewUser = async () => {
+const getReviewUser = async (req, res) => {
   try {
     const user = req.user;
     const { spotId } = req.body;
@@ -67,8 +67,9 @@ const getReviewUser = async () => {
     res.json({ errorMessage: err.message });
   }
 };
-const updateReview = async () => {
+const updateReview = async (req, res) => {
   try {
+    console.log(req.params.id);
     const reviewId = req.params.id;
     const reviewData = await Review.findById(reviewId);
 
@@ -82,7 +83,7 @@ const updateReview = async () => {
       throw new Error("User not found");
     }
 
-    if (reviewData.usrId.toString() !== user.id) {
+    if (reviewData.userId.toString() !== user.id) {
       res.status(401);
       throw new Error("User not authorized");
     }
@@ -95,7 +96,7 @@ const updateReview = async () => {
     res.json({ errorMessage: err.message });
   }
 };
-const deleteReview = async () => {
+const deleteReview = async (req, res) => {
   try {
     const reviewId = req.params.id;
     const reviewData = await Review.findById(reviewId);
