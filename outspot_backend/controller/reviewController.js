@@ -32,4 +32,44 @@ const addReview = async (req, res) => {
     res.json({ message: err.message });
   }
 };
-module.exports = { addReview };
+const getAllReviews = async () => {
+  try {
+    const { id } = req.params;
+    if (!id) {
+      res.status(200);
+      throw new Error("No any spot.");
+    }
+
+    const reviews = await Review.find({ spotId: id });
+    if (!reviews) throw new Error("Error while getting reviews");
+
+    res.send({ reviewData: reviews });
+  } catch (err) {
+    res.json({ errorMessage: err.message });
+  }
+};
+const getReviewUser = async () => {
+  try {
+  } catch (err) {
+    res.json({ errorMessage: err.message });
+  }
+};
+const updateReview = async () => {
+  try {
+  } catch (err) {
+    res.json({ errorMessage: err.message });
+  }
+};
+const deleteReview = async () => {
+  try {
+  } catch (err) {
+    res.json({ errorMessage: err.message });
+  }
+};
+module.exports = {
+  addReview,
+  getAllReviews,
+  getReviewUser,
+  updateReview,
+  deleteReview,
+};
