@@ -97,6 +97,26 @@ const updateReview = async () => {
 };
 const deleteReview = async () => {
   try {
+    const reviewId = req.params.id;
+    const reviewData = await Review.findById(reviewId);
+
+    if (!reviewData) {
+      res.status(400);
+      throw new Error("No review found");
+    }
+
+    const user = await User.findById(req.user.id);
+
+    if (!user) {
+      res.status(400);
+      throw new Error("User not found");
+    }
+    if (reviewData.userId.toString() !== user.id) {
+      res.status(401);
+      throw new Error("User not authorized");
+    }
+    await Review.findByIdAndDelete(reviewId);
+    res.status(200).json(reviewId);
   } catch (err) {
     res.json({ errorMessage: err.message });
   }
