@@ -6,13 +6,18 @@ import { BrowserRouter as Router } from "react-router-dom";
 import LoadingContextProvider from "./context/LoadingContext/LoadingContextProvider";
 
 import LoginContextProvider from "./context/LoginContext/LoginContextProvider";
+
+import ShowMessageContextProvider from "./context/showMessageContext/ShowMessageContextProvider";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Router>
       <LoginContextProvider>
         <LoadingContextProvider>
-          <App />
+          <ShowMessageContextProvider>
+            <App />
+          </ShowMessageContextProvider>
         </LoadingContextProvider>
       </LoginContextProvider>
     </Router>
