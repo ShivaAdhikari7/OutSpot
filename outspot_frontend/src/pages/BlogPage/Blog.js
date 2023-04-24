@@ -27,7 +27,7 @@ const Blog = (props) => {
             </div>
           </div>
           <h4 className="blog-title">
-            <NavLink to={`/blog/${props.id}`}>{props.title}</NavLink>
+            <NavLink to={`/blogs/${props.id}`}>{props.title}</NavLink>
           </h4>
           <p className="blog-subtitle">{props.subtitle}</p>
           <p className="blog-description">{props.description}</p>
