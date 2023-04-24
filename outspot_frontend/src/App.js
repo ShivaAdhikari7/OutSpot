@@ -1,13 +1,24 @@
 // import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { Route, Routes } from "react-router-dom";
+import React from "react";
+import { Route, Routes, Navigate } from "react-router-dom";
 
 import HomePage from "./pages/HomePage";
 import LandingPage from "./pages/LandingPage";
 
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import AddBlogPage from "./pages/AddBlogPage";
+import SpotPage from "./pages/SpotPage";
+import BlogPage from "./pages/BlogPage";
 
 const App = () => {
+  const ProtectedRoute = (props) => {
+    if (!localStorage.getItem("token")) {
+      return <Navigate to="/" replace />;
+    }
+
+    return props.children;
+  };
   return (
     <Routes>
       <Route
@@ -16,7 +27,23 @@ const App = () => {
       />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
-      <Route path="/home" element={<HomePage />} />
+      <Route
+        path="/home"
+        element={
+          <ProtectedRoute>
+            <HomePage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/blog/add"
+        element={
+          <ProtectedRoute>
+            <AddBlogPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route path="/blog/:id" element={<BlogPage />} />
       <Route
         path="*"
         element={

@@ -40,8 +40,8 @@ const LoginContextProvider = (props) => {
     setIsLoggedIn(false);
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
-    window.location.reload();
     navigate("/");
+    window.location.reload();
   };
   const loginContext = {
     isLoggedIn,

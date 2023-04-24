@@ -1,7 +1,7 @@
 import React from "react";
 import Spot from "./Spot";
-import addBlogImage from "../../assets/Images/add-blog-img.jpg";
-import addLocationImage from "../../assets/Images/add-location-img.jpg";
+// import addBlogImage from "../../assets/Images/add-blog-img.jpg";
+// import addLocationImage from "../../assets/Images/add-location-img.jpg";
 // const SpotData = [
 //   {
 //     imageURL: addBlogImage,

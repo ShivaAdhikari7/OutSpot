@@ -3,8 +3,8 @@ import axios from "axios";
 
 import Message from "../components/ui/Message";
 import Navbar from "../components/ui/Navbar/Navbar";
-import BlogSection from "./BlogPage/BlogSection";
-import SpotSection from "./SpotPage/SpotSection";
+import BlogSection from "./BlogSection/BlogSection";
+import SpotSection from "./SpotSection/SpotSection";
 import ReactDOM from "react-dom";
 import Footer from "../components/ui/Footer";
 import ShowMessageContext from "../context/showMessageContext/show-message-context";

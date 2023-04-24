@@ -1,6 +1,6 @@
 import Blog from "./Blog";
-import addBlogImage from "../../assets/Images/add-blog-img.jpg";
-import addLocationImage from "../../assets/Images/add-location-img.jpg";
+// import addBlogImage from "../../assets/Images/add-blog-img.jpg";
+// import addLocationImage from "../../assets/Images/add-location-img.jpg";
 // const blogData = [
 //   {
 //     imageURL: addBlogImage,
