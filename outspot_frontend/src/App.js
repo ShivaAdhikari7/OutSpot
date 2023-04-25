@@ -44,6 +44,7 @@ const App = () => {
         }
       />
       <Route path="/blog/:id" element={<BlogPage />} />
+      {/* <Route path="/blog/update/:id" element={<AddBlogPage />} /> */}
       <Route
         path="*"
         element={
