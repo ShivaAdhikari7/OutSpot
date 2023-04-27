@@ -64,7 +64,7 @@ const BlogPage = () => {
       });
       showMessageCtx.setShowMessage(true, "Blog deleted successfully");
 
-      navigate("/");
+      navigate("/home");
     } catch (err) {
       console.log(err);
     }

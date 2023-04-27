@@ -10,6 +10,7 @@ import SignUp from "./pages/SignUp";
 import AddBlogPage from "./pages/AddBlogPage";
 import SpotPage from "./pages/SpotPage";
 import BlogPage from "./pages/BlogPage";
+import UpdateBlogPage from "./pages/UpdateBlogPage";
 
 const App = () => {
   const ProtectedRoute = (props) => {
@@ -43,8 +44,23 @@ const App = () => {
           </ProtectedRoute>
         }
       />
-      <Route path="/blog/:id" element={<BlogPage />} />
-      {/* <Route path="/blog/update/:id" element={<AddBlogPage />} /> */}
+
+      <Route
+        path="/blog/:id"
+        element={
+          <ProtectedRoute>
+            <BlogPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/blog/update/:id"
+        element={
+          <ProtectedRoute>
+            <UpdateBlogPage />
+          </ProtectedRoute>
+        }
+      />
       <Route
         path="*"
         element={
