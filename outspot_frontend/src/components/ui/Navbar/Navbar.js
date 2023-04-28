@@ -57,6 +57,18 @@ const Navbar = () => {
                 </NavLink>
               </li>
             )}
+            {loginCtx.isLoggedIn ? (
+              <li className="nav-item mx-3">
+                <NavLink
+                  to={"/location/add"}
+                  className="nav-link my-2 px-3 py-3"
+                >
+                  Add Location
+                </NavLink>
+              </li>
+            ) : (
+              ""
+            )}
             {loginCtx.isLoggedIn && (
               <li className="nav-item mx-3">
                 <NavLink to="/blog/add" className="nav-link my-2 px-3 py-3">

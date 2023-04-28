@@ -11,6 +11,7 @@ import AddBlogPage from "./pages/AddBlogPage";
 import SpotPage from "./pages/SpotPage";
 import BlogPage from "./pages/BlogPage";
 import UpdateBlogPage from "./pages/UpdateBlogPage";
+import AddLocationPage from "./pages/AddLocation";
 
 const App = () => {
   const ProtectedRoute = (props) => {
@@ -58,6 +59,14 @@ const App = () => {
         element={
           <ProtectedRoute>
             <UpdateBlogPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/location/add"
+        element={
+          <ProtectedRoute>
+            <AddLocationPage />
           </ProtectedRoute>
         }
       />
