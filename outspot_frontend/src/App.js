@@ -116,7 +116,7 @@ const App = () => {
         }
       />
       <Route
-        path="/mylocation/bookings"
+        path="/mylocations"
         element={
           <ProtectedRoute>
             <MyLocationBookingsPage />

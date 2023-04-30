@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 
 import Logo from "../../../assets/Images/logo.png";
-
+import UserIcon from "../../icons/UserIcon";
 import LoginContext from "../../../context/LoginContext/LoginContext";
 
 const Navbar = () => {
@@ -82,6 +82,49 @@ const Navbar = () => {
                   All Locations
                 </NavLink>
               </li>
+            )}
+            {loginCtx.isLoggedIn ? (
+              <li className="nav-item mx-3 dropdown">
+                <a
+                  href="/"
+                  className={`nav-link my-2 px-3 py-3 dropdown-toggle ${"nav-link-username"}`}
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <UserIcon className={"nav-icon"} />{" "}
+                  {localStorage.getItem("userFullName")}
+                </a>
+                <ul className={`dropdown-menu ${"dropdown-menu-bg"}`}>
+                  <li>
+                    <a className="dropdown-item my-2" href="/mylocations">
+                      My Locations
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item my-2" href="/myblogs">
+                      My Blogs
+                    </a>
+                  </li>
+                  {/* <li>
+                    <hr className="dropdown-divider" />
+                  </li> */}
+                  <li>
+                    <a className="dropdown-item my-2" href="/mybookings">
+                      My Bookings
+                    </a>
+                  </li>
+                  {/* <li>
+                    <a
+                      className="dropdown-item my-2"
+                      href="/mylocation/bookings"
+                    >
+                      My Location Bookings
+                    </a>
+                  </li> */}
+                </ul>
+              </li>
+            ) : (
+              ""
             )}
             {loginCtx.isLoggedIn && (
               <li className="nav-item mx-3">

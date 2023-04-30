@@ -1,6 +1,3 @@
-.navbar {
-  box-shadow: 0 1px 10px 0 rgba($black, 0.2);
-}
 .logo-text {
   font-size: 2rem;
   font-weight: 500;
@@ -11,24 +8,50 @@
 .custom-nav-link {
   display: inline-block;
 }
-.navbar-brand {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.nav-link {
-  font-size: 1.8rem;
-}
+
 .bg-custom {
-  background-color: $primary-tint-9;
+  background-color: #f3f4ec;
 }
 
 .nav-link-signup {
-  background-color: $primary-tint-1;
+  background-color: #75813d;
   border-radius: 0.5rem !important;
   color: #fff !important;
 }
+
+.nav-link-logout {
+  background-color: #fcca2f;
+}
+
+.nav-link-logout:hover {
+  background-color: #fdd559;
+}
+
 .nav-link-signup:hover,
 .nav-link-signup:active {
-  background-color: $primary-shade-1;
+  background-color: #8f9a57;
+}
+
+.nav-link-username:link,
+.nav-link-username:visited {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  color: #727b46;
+}
+
+.nav-link-username:hover,
+.nav-link-username:active {
+  color: #8f9a57;
+}
+
+.nav-icon {
+  width: 1.6rem !important;
+  height: 1.6rem !important;
+  margin-bottom: 0 !important;
+}
+
+.dropdown-menu-bg {
+  background-color: #f1f2ec;
 }
