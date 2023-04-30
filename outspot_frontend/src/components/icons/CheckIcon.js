@@ -1,12 +1,12 @@
 import './Icon.css';
 
-const SuccessIcon = props => {
+const CheckIcon = props => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="192"
       height="192"
-      fill="#8f9857"
+      fill="#000000"
       viewBox="0 0 256 256"
       className={`icon ${props.className}`}
     >
@@ -16,4 +16,4 @@ const SuccessIcon = props => {
   );
 };
 
-export default SuccessIcon;
+export default CheckIcon;

@@ -71,6 +71,14 @@ const App = () => {
         }
       />
       <Route
+        path="/location/:id"
+        element={
+          <ProtectedRoute>
+            <SpotPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
         path="*"
         element={
           <p className="no-page-warning error-message">
