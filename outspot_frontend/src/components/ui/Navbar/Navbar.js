@@ -78,6 +78,13 @@ const Navbar = () => {
             )}
             {loginCtx.isLoggedIn && (
               <li className="nav-item mx-3">
+                <NavLink to="/location/all" className="nav-link my-2 px-3 py-3">
+                  All Locations
+                </NavLink>
+              </li>
+            )}
+            {loginCtx.isLoggedIn && (
+              <li className="nav-item mx-3">
                 <NavLink
                   onClick={logOutHandler}
                   to="/"

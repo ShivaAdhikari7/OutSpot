@@ -12,6 +12,7 @@ import SpotPage from "./pages/SpotPage";
 import BlogPage from "./pages/BlogPage";
 import UpdateBlogPage from "./pages/UpdateBlogPage";
 import AddLocationPage from "./pages/AddLocation";
+import AllSpotPage from "./pages/AllSpotPage";
 
 const App = () => {
   const ProtectedRoute = (props) => {
@@ -75,6 +76,14 @@ const App = () => {
         element={
           <ProtectedRoute>
             <SpotPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/location/all"
+        element={
+          <ProtectedRoute>
+            <AllSpotPage />
           </ProtectedRoute>
         }
       />
