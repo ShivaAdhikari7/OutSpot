@@ -16,6 +16,7 @@ import AllSpotPage from "./pages/AllSpotPage";
 import AllBlogPage from "./pages/AllBlogPage";
 import MyBlogsPage from "./pages/MyBlogPage";
 import MyBookingsPage from "./pages/MyBookingsPage";
+import MyLocationBookingsPage from "./pages/MyLocationBookings";
 
 const App = () => {
   const ProtectedRoute = (props) => {
@@ -111,6 +112,14 @@ const App = () => {
         element={
           <ProtectedRoute>
             <MyBookingsPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/mylocation/bookings"
+        element={
+          <ProtectedRoute>
+            <MyLocationBookingsPage />
           </ProtectedRoute>
         }
       />
