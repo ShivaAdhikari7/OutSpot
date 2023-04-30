@@ -13,6 +13,7 @@ import BlogPage from "./pages/BlogPage";
 import UpdateBlogPage from "./pages/UpdateBlogPage";
 import AddLocationPage from "./pages/AddLocation";
 import AllSpotPage from "./pages/AllSpotPage";
+import AllBlogPage from "./pages/AllBlogPage";
 
 const App = () => {
   const ProtectedRoute = (props) => {
@@ -52,6 +53,14 @@ const App = () => {
         element={
           <ProtectedRoute>
             <BlogPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/blog/all"
+        element={
+          <ProtectedRoute>
+            <AllBlogPage />
           </ProtectedRoute>
         }
       />

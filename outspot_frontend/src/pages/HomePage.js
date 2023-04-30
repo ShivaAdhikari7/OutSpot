@@ -97,7 +97,7 @@ const HomePage = (props) => {
       <BlogSection heading="blogs" blogData={blogData.slice(0, 6)} />
       <div className="view-all-container">
         <NavLink to={"/blog/all"} className={"view-all-link"}>
-          View all Spots &#8594;
+          View all Blogs &#8594;
         </NavLink>
       </div>
       <Footer />
