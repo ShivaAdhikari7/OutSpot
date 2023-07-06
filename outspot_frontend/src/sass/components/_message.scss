@@ -27,12 +27,13 @@
   font-size: 2.4rem;
   margin: 0;
   padding: 0;
-}
-.message-icon {
-  width: 3.2rem;
-  height: 3.2rem;
-  margin: 0;
-  padding: 0;
+
+  &-icon {
+    width: 3.2rem;
+    height: 3.2rem;
+    margin: 0;
+    padding: 0;
+  }
 }
 .cross {
   font-size: 1.2rem;
